@@ -6,12 +6,14 @@ import { Menu } from "lucide-react";
 
 export default function Header() {
   return (
-    <header className="w-full bg-[#11151c] p-8 flex items-center justify-between">
-      <Image src={"/logo.png"} width={150} height={150} alt="logo" />
+    <header className="w-full bg-[#11151c] p-5 flex items-center justify-between">
+      <Link href={"/"}>
+        <Image src={"/logo.png"} width={100} height={100} alt="logo" />
+      </Link>
       <nav className="">
         <ul className="flex items-center gap-10">
           {["Home", "About", "Services", "Blog", "Contact"].map((item) => (
-            <li key={item} className="inline-block mr-4">
+            <li key={item} className="text-sm font-semibold">
               <Link href={`/${item.toLowerCase()}`} className="text-white">
                 {item}
               </Link>
@@ -20,7 +22,7 @@ export default function Header() {
         </ul>
       </nav>
       <div className="text-white border border-white rounded-full p-2 ">
-        <Menu />
+        <Menu size={20} />
       </div>
     </header>
   );
