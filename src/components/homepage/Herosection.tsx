@@ -24,7 +24,7 @@ export default function Herosection() {
       {/* Foreground Images */}
       <div className="absolute flex items-start w-full ">
         <motion.div
-          className="mt-20"
+          className="mt-30"
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
@@ -35,8 +35,8 @@ export default function Herosection() {
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <Image
-              width={222}
-              height={222}
+              width={260}
+              height={260}
               alt="Decorative image 1"
               src="/image1.png"
               className="relative left-[-30px]"
@@ -48,11 +48,11 @@ export default function Herosection() {
             transition={{ duration: 0.8, delay: 1 }}
           >
             <Image
-              width={222}
-              height={222}
+              width={260}
+              height={260}
               alt="Decorative image 2"
               src="/image2.png"
-              className="relative left-42 top-[-25px]"
+              className="relative left-49 top-[-25px]"
             />
           </motion.div>
           <motion.div
@@ -61,8 +61,8 @@ export default function Herosection() {
             transition={{ duration: 0.8, delay: 1.2 }}
           >
             <Image
-              width={222}
-              height={222}
+              width={260}
+              height={260}
               alt="Decorative image 3"
               src="/image3.png"
               className="relative top-[-15px] z-10"
@@ -82,16 +82,16 @@ export default function Herosection() {
             />
           </motion.div>
         </motion.div>
-        <div className="z-10 relative w-full py-20 flex flex-col jsutify-start px-32 leading-38">
+        <div className="z-10 relative w-full py-25 flex flex-col jsutify-start px-35 leading-38">
           <motion.p
-            className="text-white text-4xl font-medium ml-2"
+            className="text-white text-5xl font-medium ml-2"
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             Bridging You to
           </motion.p>
-          <h1 className="text-white text-[140px] font-bold flex items-center relative">
+          <h1 className="text-white text-[145px] font-bold flex items-center relative">
             <motion.span
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -115,7 +115,7 @@ export default function Herosection() {
             </motion.span>
           </h1>
           <motion.p
-            className="text-white  text-6xl font-medium ml-2"
+            className="text-white  text-7xl font-medium ml-2"
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
@@ -124,6 +124,22 @@ export default function Herosection() {
           </motion.p>
         </div>
       </div>
+
+      {/* Fixed Image4 positioning */}
+      <motion.div
+        className="absolute top-[25.1%] right-0"
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1, delay: 1.6, ease: "easeOut" }}
+      >
+        <Image
+          width={695}
+          height={695}
+          alt="Hero image"
+          src="/image4.png"
+          className=""
+        />
+      </motion.div>
     </div>
   );
 }
