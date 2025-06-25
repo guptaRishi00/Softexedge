@@ -99,7 +99,12 @@ export default function Herosection() {
             >
               DIGITAL
             </motion.span>
-            <motion.span className="absolute inset-0 flex items-center justify-center">
+            <motion.span
+              className="absolute inset-0 flex items-center justify-center"
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+            >
               <Image
                 width={730}
                 height={730}
