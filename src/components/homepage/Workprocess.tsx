@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import { useRef } from "react";
 
 type Props = {};
@@ -79,7 +79,7 @@ const Workprocess = (props: Props) => {
   const iconVariants = {
     hidden: {
       opacity: 0,
-      rotate: -180,
+
       scale: 0,
     },
     visible: {
@@ -179,7 +179,7 @@ const Workprocess = (props: Props) => {
 
   return (
     <div
-      className="relative bg-[#02050a] w-full h-full overflow-hidden -mt-20"
+      className="relative bg-[#02050a] w-full h-full overflow-hidden -mt-20 mb-50"
       ref={ref}
     >
       {/* Background Grid Animation */}
@@ -187,21 +187,16 @@ const Workprocess = (props: Props) => {
         variants={backgroundImageVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
+        className="hidden lg:block"
       >
-        <Image
-          src="/grid.svg"
-          alt="grid"
-          width={600}
-          height={800}
-          className="absolute right-0 top-0 z-0"
-        />
+        <div className="absolute right-0 top-0 z-0 w-[300px] h-[400px] md:w-[400px] md:h-[600px] lg:w-[600px] lg:h-[800px] bg-[url('/grid.svg')] bg-contain bg-no-repeat bg-right-top opacity-20" />
       </motion.div>
 
-      <div className="relative z-10 pt-24 text-center flex flex-col items-center justify-start w-full h-full gap-10">
+      <div className="relative z-10 pt-12 md:pt-16 lg:pt-24 text-center flex flex-col items-center justify-start w-full h-full gap-6 md:gap-8 lg:gap-10 px-4 md:px-6 lg:px-8">
         {/* Header Section */}
-        <div ref={headerRef}>
+        <div ref={headerRef} className="max-w-4xl mx-auto">
           <motion.p
-            className="text-[#388BFF] tracking-wider font-medium"
+            className="text-[#388BFF] tracking-wider font-medium text-sm md:text-base"
             variants={headerVariants}
             initial="hidden"
             animate={isHeaderInView ? "visible" : "hidden"}
@@ -210,7 +205,7 @@ const Workprocess = (props: Props) => {
           </motion.p>
 
           <motion.h1
-            className="text-white text-6xl font-bold mt-4"
+            className="text-white text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mt-2 md:mt-4 leading-tight"
             variants={titleVariants}
             initial="hidden"
             animate={isHeaderInView ? "visible" : "hidden"}
@@ -222,80 +217,88 @@ const Workprocess = (props: Props) => {
         {/* Process Steps */}
         <motion.div
           ref={processRef}
-          className="flex items-center justify-center w-full gap-8 mt-20"
+          className="flex flex-col md:flex-row items-center justify-center w-full gap-6 md:gap-4 lg:gap-8 mt-10 md:mt-16 lg:mt-20 max-w-7xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate={isProcessInView ? "visible" : "hidden"}
         >
           {process.map((item, index) => (
             <motion.div
-              className="flex flex-col items-start justify-center"
+              className="flex flex-col items-center lg:items-start justify-center w-full md:w-1/4 max-w-xs"
               key={index}
               variants={itemVariants}
-              whileHover={{
-                scale: 1.05,
-                y: -10,
-                transition: { duration: 0.3 },
-              }}
               whileTap={{ scale: 0.95 }}
             >
               <motion.div
-                className="border-2 border-[#388BFF] rounded-full p-5 w-30 h-30 flex items-center justify-center cursor-pointer"
+                className="relative group cursor-pointer"
                 whileHover={{
-                  borderColor: "#60A5FA",
-                  boxShadow: "0 0 30px rgba(56, 139, 255, 0.4)",
                   scale: 1.1,
                   transition: { duration: 0.3 },
                 }}
-                initial={{
-                  boxShadow: "0 0 0px rgba(56, 139, 255, 0)",
-                }}
-                animate={{
-                  boxShadow: isProcessInView
-                    ? "0 0 15px rgba(56, 139, 255, 0.2)"
-                    : "0 0 0px rgba(56, 139, 255, 0)",
-                }}
-                transition={{
-                  delay: index * 0.1 + 0.5,
-                  duration: 0.8,
-                }}
               >
-                <div className="bg-[#11151C] ml-10 mt-2 p-16 rounded-full flex items-center justify-center relative">
+                <motion.div
+                  className="border-2 border-[#388BFF] rounded-full p-3 md:p-4 lg:p-5 w-20 h-20 md:w-24 md:h-24 lg:w-30 lg:h-30 flex items-center justify-center"
+                  initial={{
+                    boxShadow: "0 0 0px rgba(56, 139, 255, 0)",
+                  }}
+                  animate={{
+                    boxShadow: isProcessInView
+                      ? "0 0 15px rgba(56, 139, 255, 0.2)"
+                      : "0 0 0px rgba(56, 139, 255, 0)",
+                  }}
+                  whileHover={{
+                    borderColor: "#60A5FA",
+                    boxShadow: "0 0 30px rgba(56, 139, 255, 0.4)",
+                  }}
+                  transition={{
+                    delay: index * 0.1 + 0.5,
+                    duration: 0.8,
+                  }}
+                />
+
+                <motion.div
+                  className="bg-[#11151C] lg:ml-4 lg:mt-2 p-8 md:p-8 lg:p-0 xl:p-10 rounded-full flex items-center justify-center absolute top-0 left-0"
+                  whileHover={{
+                    x: "calc(50% - 50%)",
+                    y: "calc(50% - 50%)",
+                    marginLeft: 0,
+                    marginTop: 0,
+                    transform: "translate(-50%, -50%)",
+                    left: "50%",
+                    top: "50%",
+                    border: "2px solid #388BFF",
+                    boxShadow: "0 0 30px rgba(56, 139, 255, 0.4)",
+                    transition: {
+                      duration: 0.3,
+                      border: { delay: 0.2, duration: 0.1 },
+                    },
+                  }}
+                >
                   <motion.div
                     variants={iconVariants}
-                    whileHover={{
-                      rotate: 5,
-                      scale: 1.1,
-                      transition: { duration: 0.6 },
-                    }}
-                    className="absolute w-12 h-12 flex items-center justify-center"
+                    className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 flex items-center justify-center"
                   >
                     <Image
-                      src={`${item.image}`}
+                      src={item.image}
                       alt={item.title}
-                      width={50}
-                      height={50}
-                      className="absolute"
+                      width={48}
+                      height={48}
+                      className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 object-contain"
                     />
                   </motion.div>
-                </div>
+                </motion.div>
               </motion.div>
 
               <motion.h3
-                className="text-white text-xl font-semibold mt-10"
+                className="text-white text-lg md:text-xl font-semibold mt-6 md:mt-8 lg:mt-10 text-center lg:text-start px-2"
                 variants={textVariants}
               >
                 {item.title}
               </motion.h3>
 
               <motion.p
-                className="text-gray-400 text-sm mt-2 max-w-xs text-justify"
+                className="text-gray-400 text-sm md:text-base mt-2 md:mt-3 max-w-xs text-center lg:text-start px-2 leading-relaxed"
                 variants={textVariants}
-                transition={{ delay: 0.2 }}
-                whileHover={{
-                  color: "#94A3B8",
-                  transition: { duration: 0.3 },
-                }}
               >
                 {item.description}
               </motion.p>
@@ -313,13 +316,12 @@ const Workprocess = (props: Props) => {
             scale: 1.02,
             transition: { duration: 0.3 },
           }}
+          className="w-full max-w-7xl mx-auto"
         >
-          <Image
+          <img
             src="/process-img.svg"
             alt="Decorative image"
-            width={2000}
-            height={2000}
-            className="py-20 px-10"
+            className="w-full h-auto py-10 md:py-16 lg:py-20 px-4 md:px-6 lg:px-10"
           />
         </motion.div>
       </div>
